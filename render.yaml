@@ -2,7 +2,6 @@ services:
   - type: web
     name: auto-form-filler-backend
     env: docker
-    rootDir: backend
     dockerfilePath: backend/Dockerfile
     plan: free
     envVars:
@@ -12,8 +11,9 @@ services:
         sync: false
     healthCheckPath: /api/health
 
-  - type: static
+  - type: web
     name: auto-form-filler-frontend
+    env: static
     rootDir: frontend
     buildCommand: npm install && npm run build
     staticPublishPath: build
