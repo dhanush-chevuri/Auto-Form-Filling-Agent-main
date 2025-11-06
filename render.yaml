@@ -1,0 +1,23 @@
+services:
+  - type: web
+    name: auto-form-filler-backend
+    env: docker
+    rootDir: backend
+    dockerfilePath: backend/Dockerfile
+    plan: free
+    envVars:
+      - key: OPENROUTER_API_KEY
+        sync: false
+      - key: LLAMA_CLOUD_API_KEY
+        sync: false
+    healthCheckPath: /api/health
+
+  - type: static
+    name: auto-form-filler-frontend
+    rootDir: frontend
+    buildCommand: npm install && npm run build
+    staticPublishPath: build
+    envVars:
+      - key: REACT_APP_API_URL
+        value: https://auto-form-filler-backend.onrender.com
+

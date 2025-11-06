@@ -1,0 +1,11 @@
+[build]
+  publish = "frontend/build"
+
+[[redirects]]
+  from = "/api/*"
+  to = "http://98.93.74.61:8000/api/:splat"
+  status = 200
+  force = true
+
+[functions]
+  timeout = 60

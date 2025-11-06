@@ -1,0 +1,4 @@
+# Root requirements file for Render deployment
+# This helps Render detect the project as Python
+
+-r backend/requirements.txt
